@@ -1,0 +1,9 @@
+{
+  "id": "ik2d6",
+  "title": "Iron Kingdoms: Full Metal Fantasy",
+  "description": "A human-readable description of your system.",
+  "version": "0.0.1",
+  "esmodules": [
+    "ik2d6.mjs"
+  ]
+}
