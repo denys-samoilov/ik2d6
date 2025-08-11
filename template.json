@@ -5,7 +5,6 @@
             "jack"
         ],
         "character":{
-            
             "hp": 0
         }
     },
@@ -20,11 +19,12 @@
             "itemDescription":{"description":""}
         },
         "weapon": {
-            "attackWith": "guns",
-            "damage": 0,
-            "reload": 0,
-            "mookBonus": 0,
-            "pumpAction": false,
+            "attackType": "guns",
+            "skill": "rifle",
+            "range": 0,
+            "ammoRequired": false,
+            "ammoCapacity": 1,
+            "pow": 0,
             "templates": ["itemDescription"]
         },
         "vehicle": {

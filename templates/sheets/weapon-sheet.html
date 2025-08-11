@@ -1,7 +1,57 @@
 <form class="{{cssClass}}" autocomplete="off">
     <header class="sheet-header">
-        <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="64" width="64"/>
         <h1><input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'Name' }}"/></h1>
     </header>
-    <p>hello!!</p>
+            <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="256" width="auto" style="display: block;
+  margin: auto;"/>
+
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Skill</th>
+            <th>Range (in ft)</th>
+            <th>Ammo Required</th>
+            <th>Ammo Capacity</th>
+            <th>POW</th>
+        </tr>
+        <tr>
+            <td>
+                <select name="system.attackType">
+                    <option value="none" {{#if (eq item.system.attackType "none")}}selected{{/if}}>{{localize 'None'}}</option>
+                    <option value="melee" {{#if (eq item.system.attackType "melee")}}selected{{/if}}>{{localize 'Melee'}}</option>
+                    <option value="ranged" {{#if (eq item.system.attackType "ranged")}}selected{{/if}}>{{localize 'Ranged'}}</option>
+                    <option value="magic" {{#if (eq item.system.attackType "magic")}}selected{{/if}}>{{localize 'Magic'}}</option>
+                </select>
+            </td>
+
+            <td>
+                <select name="system.skill">
+                    <option value="none" {{#if (eq item.system.skill "none")}}selected{{/if}}>{{localize 'None'}}</option>
+                    <option value="handweapon" {{#if (eq item.system.skill "handweapon")}}selected{{/if}}>{{localize 'Hand Weapon'}}</option>
+                    <option value="heavyweapon" {{#if (eq item.system.skill "heavyweapon")}}selected{{/if}}>{{localize 'Heavy Weapon'}}</option>
+                    <option value="rifle" {{#if (eq item.system.skill "rifle")}}selected{{/if}}>{{localize 'Rifle'}}</option>
+                </select>
+            </td>
+            <td>    
+                <input name="system.range" type="text" value="{{item.system.range}}"/>
+            </td>
+            <td>
+                <select name="system.ammoRequired">
+                    <option value="yes" {{#if (eq item.system.ammoRequired "yes")}}selected{{/if}}>{{localize 'Yes'}}</option>
+                    <option value="no" {{#if (eq item.system.ammoRequired "no")}}selected{{/if}}>{{localize 'No'}}</option>
+                </select>
+            </td>
+            <td>
+                <input name="system.ammoCapacity" type="text" value="{{item.system.ammoCapacity}}"/>
+            </td>
+            <td>
+                <input name="system.pow" type="text" value="{{item.system.pow}}"/>
+            </td>
+            
+            
+        </tr>
+    </table>
+    <div class="sheet-description">
+        <textarea name="system.description" placeholder="{{localize 'Description'}}">{{item.system.description}}</textarea>
+    </div>
 </form>
