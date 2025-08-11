@@ -2,10 +2,16 @@
     "Actor":{
         "types":[
             "character",
+            "npc",
             "jack"
         ],
+        "templates":{
+            "primaryStats":{"phy":0, "agi":0, "int":0},
+            "secondaryStats":{"spd":0, "str":0, "prw":0, "poi":0, "arc":0, "per":0, "will":0}
+        },
         "character":{
-            "hp": 0
+            "hp": 0,
+            "templates": ["primaryStats", "secondaryStats"]
         }
     },
 

@@ -1,4 +1,9 @@
-select {
-display: block;
-margin: 0 auto;
+.actor-sheet input.hero-name {
+  font-size: 1.2em;
+  font-weight: bold;
+  color: #333;
+}
+.actor-sheet #sex {
+  text-align: center;
+  background: #f0f0f0;
 }

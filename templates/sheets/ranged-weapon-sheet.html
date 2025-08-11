@@ -72,6 +72,7 @@
         <textarea name="system.specialRules" placeholder="{{localize 'Special Rules'}}">{{item.system.specialRules}}</textarea>
     </div>
 
+
     <p>Type: {{item.system.attackType}}</p>
     <p>Skill: {{item.system.skill}}</p>
     <p>Ef. range: {{item.system.effectiveRange}}</p>
@@ -83,4 +84,7 @@
     <p>Attack Modifier: {{item.system.attModifier}}</p>
     <p>Price: {{item.system.price}}</p>
     
+
+<button type="button" class="roll-attack" data-item-id="{{item._id}}">Roll Attack</button>
+<button type="button" class="roll-damage-ranged" data-item-id="{{item._id}}">Roll Attack</button>
 </form>
