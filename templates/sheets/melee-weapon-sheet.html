@@ -1,0 +1,69 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'Name' }}"/></h1>
+    </header>
+            <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="256" width="auto" style="display: block;
+  margin: auto;"/>
+
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Skill</th>
+            <th>POW (one-handed)</th>
+            <th>Att modifier (one-handed)</th>
+            <th>POW (two-handed)</th>
+            <th>Att modifier (two-handed)</th>
+            <th>Price (in GC)</th>
+        </tr>
+        <tr>
+            <td>
+                <select name="system.attackType">
+                    <option value="melee" {{#if (eq item.system.attackType "ranged")}}selected{{/if}}>{{localize 'Melee'}}</option>
+                    <option value="arcane" {{#if (eq item.system.attackType "arcane")}}selected{{/if}}>{{localize 'Arcane'}}</option>
+                </select>
+            </td>
+
+            <td>
+                <select name="system.skill">
+                    <option value="great-weapon" {{#if (eq item.system.skill "great-weapon")}}selected{{/if}}>{{localize 'Great Weapon'}}</option>
+                    <option value="hand-weapon" {{#if (eq item.system.skill "hand-weapon")}}selected{{/if}}>{{localize 'Hand Weapon'}}</option>
+                    <option value="lance" {{#if (eq item.system.skill "lance")}}selected{{/if}}>{{localize 'Lance'}}</option>
+                    <option value="shield" {{#if (eq item.system.skill "shield")}}selected{{/if}}>{{localize 'Shield'}}</option>
+                    <option value="thrown-weapon" {{#if (eq item.system.skill "thrown-weapon")}}selected{{/if}}>{{localize 'Thrown Weapon'}}</option>
+                    <option value="unarmed-combat" {{#if (eq item.system.skill "unarmed-combat")}}selected{{/if}}>{{localize 'Unarmed Combat'}}</option>
+                </select>
+            </td>
+            <td>    
+                <input name="system.powOneHanded" type="text" value="{{item.system.powOneHanded}}"/>
+            </td>
+            <td>
+                <input name="system.attModifierOneHanded" type="text" value="{{item.system.attModifierOneHanded}}"/>
+            </td>
+            <td>
+                <input name="system.powTwoHanded" type="text" value="{{item.system.powTwoHanded}}"/>
+            </td>
+            <td>
+                <input name="system.attModifierTwoHanded" type="text" value="{{item.system.attModifierTwoHanded}}"/>
+            </td>
+            <td>
+                <input name="system.price" type="text" value="{{item.system.price}}"/>
+            </td>            
+            
+        </tr>
+    </table>
+    <div class="sheet-description">
+        <textarea name="system.description" placeholder="{{localize 'Description'}}">{{item.system.description}}</textarea>
+    </div>
+    <div class="sheet-additional-rules">
+        <textarea name="system.specialRules" placeholder="{{localize 'Special Rules'}}">{{item.system.specialRules}}</textarea>
+    </div>
+<p>Type: {{item.system.attackType}}</p>
+<p>Skill: {{item.system.skill}}</p>
+<p>POW (one-handed): {{item.system.powOneHanded}}</p>
+<p>Att modifier (one-handed): {{item.system.attModifierOneHanded}}</p>
+<p>POW (two-handed): {{item.system.powTwoHanded}}</p>
+<p>Att modifier (two-handed): {{item.system.attModifierTwoHanded}}</p>
+<p>Price: {{item.system.price}}</p>
+    
+    
+</form>

@@ -1,0 +1,39 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'Name' }}"/></h1>
+    </header>
+            <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="256" width="auto" style="display: block;
+  margin: auto;"/>
+
+    <table>
+        <tr>
+            <th>DEF modifier</th>
+            <th>SPD modifier</th>
+            <th>ARM modifier</th>
+            <th>Price</th>
+        </tr>
+        <tr>
+            <td>
+                <input name="system.defModifier" type="text" value="{{item.system.defModifier}}"/>
+            </td>
+
+            <td>
+                <input name="system.spdModifier" type="text" value="{{item.system.spdModifier}}"/>
+            </td>
+
+            <td>
+                <input name="system.armModifier" type="text" value="{{item.system.armModifier}}"/>
+            </td>
+            <td>
+                <input name="system.price" type="text" value="{{item.system.price}}"/>
+            </td>            
+        </tr>
+    </table>
+    <div class="sheet-description">
+        <textarea name="system.description" placeholder="{{localize 'Description'}}">{{item.system.description}}</textarea>
+    </div>
+
+    <div class="sheet-additional-rules">
+        <textarea name="system.specialRules" placeholder="{{localize 'Special Rules'}}">{{item.system.specialRules}}</textarea>
+    </div>
+</form>

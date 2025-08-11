@@ -1,0 +1,86 @@
+<form class="{{cssClass}}" autocomplete="off">
+    <header class="sheet-header">
+        <h1><input name="name" type="text" value="{{item.name}}" placeholder="{{ localize 'Name' }}"/></h1>
+    </header>
+            <img src="{{item.img}}" data-edit="img" title="{{item.name}}" height="256" width="auto" style="display: block;
+  margin: auto;"/>
+
+    <table>
+        <tr>
+            <th>Type</th>
+            <th>Skill</th>
+            <th>Effective Range (in ft)</th>
+            <th>Extreme Range (in ft)</th>
+            <th>Spray</th>
+            <th>Ammo Capacity</th>
+            <th>AoE</th>
+            <th>POW</th>
+            <th>Attack Modifier</th>
+            <th>Price (in GC)</th>
+        </tr>
+        <tr>
+            <td>
+                <select name="system.attackType">
+                    <option value="ranged" {{#if (eq item.system.attackType "ranged")}}selected{{/if}}>{{localize 'Ranged'}}</option>
+                    <option value="arcane" {{#if (eq item.system.attackType "arcane")}}selected{{/if}}>{{localize 'Arcane'}}</option>
+                </select>
+            </td>
+
+            <td>
+                <select name="system.skill">
+                    <option value="archery" {{#if (eq item.system.skill "archery")}}selected{{/if}}>{{localize 'Archery'}}</option>
+                    <option value="crossbow" {{#if (eq item.system.skill "crossbow")}}selected{{/if}}>{{localize 'Crossbow'}}</option>
+                    <option value="light-artillery" {{#if (eq item.system.skill "light-artillery")}}selected{{/if}}>{{localize 'Light Artillery'}}</option>
+                    <option value="pistol" {{#if (eq item.system.skill "pistol")}}selected{{/if}}>{{localize 'Pistol'}}</option>
+                    <option value="rifle" {{#if (eq item.system.skill "rifle")}}selected{{/if}}>{{localize 'Rifle'}}</option>
+                </select>
+            </td>
+            <td>    
+                <input name="system.effectiveRange" type="text" value="{{item.system.effectiveRange}}"/>
+            </td>
+            <td>    
+                <input name="system.extremeRange" type="text" value="{{item.system.extremeRange}}"/>
+            </td>
+            <td>    
+                <select name="system.spray">
+                    <option value="false" {{#if (eq item.system.spray "false")}}selected{{/if}}>{{localize 'No'}}</option>
+                    <option value="true" {{#if (eq item.system.spray "true")}}selected{{/if}}>{{localize 'Yes'}}</option>
+                </select>
+            </td>
+            <td>
+                <input name="system.ammoCapacity" type="text" value="{{item.system.ammoCapacity}}"/>
+            </td>
+            <td>
+                <input name="system.aoe" type="text" value="{{item.system.aoe}}"/>
+            </td>
+            <td>
+                <input name="system.pow" type="text" value="{{item.system.pow}}"/>
+            </td>
+            <td>
+                <input name="system.attModifier" type="text" value="{{item.system.attModifier}}"/>
+            </td>
+            <td>
+                <input name="system.price" type="text" value="{{item.system.price}}"/>
+            </td>            
+            
+        </tr>
+    </table>
+    <div class="sheet-description">
+        <textarea name="system.description" placeholder="{{localize 'Description'}}">{{item.system.description}}</textarea>
+    </div>
+    <div class="sheet-additional-rules">
+        <textarea name="system.specialRules" placeholder="{{localize 'Special Rules'}}">{{item.system.specialRules}}</textarea>
+    </div>
+
+    <p>Type: {{item.system.attackType}}</p>
+    <p>Skill: {{item.system.skill}}</p>
+    <p>Ef. range: {{item.system.effectiveRange}}</p>
+    <p>Ex. range: {{item.system.extremeRange}}</p>
+    <p>Spray: {{item.system.spray}}</p>
+    <p>Ammo capacity: {{item.system.ammoCapacity}}</p>
+    <p>AoE: {{item.system.aoe}}</p>
+    <p>POW: {{item.system.pow}}</p>
+    <p>Attack Modifier: {{item.system.attModifier}}</p>
+    <p>Price: {{item.system.price}}</p>
+    
+</form>

@@ -12,27 +12,42 @@
     "Item": {
 
         "types":[
-            "weapon",
-            "vehicle"
+            "ranged-weapon",
+            "melee-weapon",
+            "vehicle",
+            "armor"
         ],
         "templates":{
-            "itemDescription":{"description":""}
+            "itemDescription":{"description":""},
+            "price": {"price": 0, "currency": "gc"},
+            "additionalRules": {"specialRules": ""}
         },
-        "weapon": {
-            "attackType": "guns",
-            "skill": "rifle",
-            "range": 0,
-            "ammoRequired": false,
+        "ranged-weapon": {
+            "attackType": "none",
+            "skill": "none",
+            "effectiveRange": 0,
+            "extremeRange": 0,
+            "spray": false,
             "ammoCapacity": 1,
+            "aoe": 0,
             "pow": 0,
-            "templates": ["itemDescription"]
+            "attModifier": 0,
+            "templates": ["itemDescription", "price", "additionalRules"]
         },
-        "vehicle": {
-            "acceleration": 0,
-            "frame": 0,
-            "handling": 0,
-            "personal": false,
-            "templates": ["itemDescription"]
+        "melee-weapon": {
+            "attackType": "none",
+            "skill": "none",
+            "powOneHanded": 0,
+            "attModifierOneHanded": 0,
+            "powTwoHanded": 0,
+           "attModifierTwoHanded": 0,
+            "templates": ["itemDescription", "price", "additionalRules"]
+        },
+        "armor": {
+            "defModifier": 0,
+            "spdModifier": 0,
+            "armModifier": 0,
+            "templates": ["itemDescription", "price", "additionalRules"]
         }
 
         
