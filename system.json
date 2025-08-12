@@ -3,10 +3,18 @@
   "title": "Iron Kingdoms: Full Metal Fantasy",
   "description": "A human-readable description of your system.",
   "version": "0.0.1",
+  "authors": [
+    {
+      "name": "Duiug",
+      "url": ""
+    }
+  ],
   "esmodules": [
     "ik2d6.mjs"
   ],
-  "style": [
-    "ik2d6.css"
-  ]
+  "styles": ["styles/styles.css"],
+  "compatibility": {
+    "minimum": "12.0",
+    "verified": "12.331"
+  }
 }

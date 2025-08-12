@@ -1,0 +1,14 @@
+.pfp {
+    border-radius: 50% !important;
+    width: 64px !important;
+    height: 64px !important;
+    object-fit: cover !important;
+    margin-right: 10px !important;
+}
+
+h2 {
+    font-size: 1.5em;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+    color:azure;
+}

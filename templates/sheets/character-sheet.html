@@ -23,10 +23,25 @@
       <label>
         <input type="checkbox" class="boost-dmg-checkbox" data-item-id="{{item._id}}"> Boost Damage (3d6)
       </label>
-      <button type="button" class="roll-attack" data-item-id="{{item._id}}">Shoot!</button>
+      {{#if (eq item.type "ranged-weapon")}}
+  <button type="button" class="roll-ranged-attack"
+          data-item-id="{{item._id}}"
+          data-att-modifier="{{item.system.attModifier}}"
+          data-pow="{{item.system.pow}}">Shoot!</button>
+{{/if}}
+
+{{#if (eq item.type "melee-weapon")}}
+  <button type="button" class="roll-melee-one-hand-attack"
+          data-item-id="{{item._id}}"
+          data-att-modifier="{{item.system.attModifierOneHanded}}"
+          data-pow="{{item.system.powOneHanded}}">Melee (1H)</button>
+  <button type="button" class="roll-melee-two-hand-attack"
+          data-item-id="{{item._id}}"
+          data-att-modifier="{{item.system.attModifierTwoHanded}}"
+          data-pow="{{item.system.powTwoHanded}}">Melee (2H)</button>
+{{/if}}
     </li>
   {{/each}}
 </ol>
 </section>
 </form>
-
