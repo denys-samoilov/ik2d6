@@ -6,6 +6,9 @@
     
     <p>HELLO IM ACTOR!!!</p>
     <input class="hero-name" name="name" type="text" value="{{actor.name}}" title="Hero's Name">
+
+    <input name="system.hp" type="text" value="{{actor.system.hp}}"/>
+
     <section class="items">
   <h3>Owned Items</h3>
   <ol class="actor-items">
@@ -15,13 +18,12 @@
       <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
       <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
       <label>
-        <input type="checkbox" class="boost-att-checkbox"> Boost Attack (3d6)
+        <input type="checkbox" class="boost-att-checkbox" data-item-id="{{item._id}}"> Boost Attack (3d6)
       </label>
       <label>
-        <input type="checkbox" class="boost-dmg-checkbox"> Boost Damage (3d6)
+        <input type="checkbox" class="boost-dmg-checkbox" data-item-id="{{item._id}}"> Boost Damage (3d6)
       </label>
-      <button type="button" class="roll-attack" data-item-id="{{item._id}}">Roll Attack</button>
-      <button type="button" class="roll-damage-ranged" data-item-id="{{item._id}}">Roll Damage</button>
+      <button type="button" class="roll-attack" data-item-id="{{item._id}}">Shoot!</button>
     </li>
   {{/each}}
 </ol>
