@@ -3,11 +3,11 @@
         "types":[
             "character",
             "npc",
-            "jack"
+            "steamjack"
         ],
         "templates":{
             "primaryStats":{"phy":0, "agi":0, "int":0},
-            "secondaryStats":{"spd":0, "str":0, "prw":0, "poi":0, "arc":0, "per":0, "will":0}
+            "secondaryStats":{"spd":0, "str":0, "prw":0, "poi":0, "arc":0, "per":0, "will":0, "def":0, "arm":0, "feat":0}
         },
         "character":{
             "hp": 0,

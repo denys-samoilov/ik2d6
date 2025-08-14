@@ -29,11 +29,15 @@ export default class IK2d6ActorSheet extends ActorSheet {
       }
     });
 
+    html.find('.recalculate-armor').click(ev => {
+      this._onRecalculateArmor(ev);
+    });
+
     // Handle attack rolls
     html.find('.roll-ranged-attack, .roll-melee-one-hand-attack, .roll-melee-two-hand-attack').click(ev => {
       const button = $(ev.currentTarget);
-      const attModifier = button.data('att-modifier') || 0;
-      const pow = button.data('pow') || 0;
+      const attModifier = Number(button.data('att-modifier')) || 0;
+      const pow = Number(button.data('pow')) || 0;
       this._onRoll(ev, attModifier, pow);
     });
   }
@@ -56,7 +60,7 @@ export default class IK2d6ActorSheet extends ActorSheet {
 
     // Check if item is a melee weapon
     if(item.type == "melee-weapon") {
-      pow += this.actor.system.str;
+      pow += Number(this.actor.system.str);
     }
 
 
@@ -122,10 +126,33 @@ export default class IK2d6ActorSheet extends ActorSheet {
     if (damageRoll.total > 15) {
       const armor = 15; 
       const effectiveDamage = Math.max(damageRoll.total - armor, 0);
-      const currentHp = getProperty(targetActor, "system.hp") || 0;
+      const currentHp = Number(getProperty(targetActor, "system.hp")) || 0;
       const newHp = Math.max(currentHp - effectiveDamage, 0);
       await targetActor.update({ "system.hp": newHp });
       ui.notifications.info(`Target ${targetActor.name} takes damage! HP reduced.`);
     }
   }
+
+  _onRecalculateArmor(event) {
+    event.preventDefault();
+    const li = $(event.currentTarget).closest('.actor-item');
+    const itemId = li.data('item-id');
+
+    const item = this.actor.items.get(itemId);
+    if (item.type == "armor") {
+      const spdModifier = Number(item.system.spdModifier);
+      const defModifier = Number(item.system.defModifier);
+      const armModifier = Number(item.system.armModifier);
+      const currentPhy = Number(this.actor.system.phy);
+      const currentSpd = Number(this.actor.system.spd);
+      const currentAgl = Number(this.actor.system.agi);
+      const currentPer = Number(this.actor.system.per);
+
+      const newDef = currentSpd + currentAgl + currentPer + defModifier;
+      const newArm = currentPhy + armModifier;
+      this.actor.update({ "system.def": newDef });
+      this.actor.update({ "system.arm": newArm });
+    }
+  }
+
 }

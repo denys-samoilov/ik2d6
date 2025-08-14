@@ -7,7 +7,91 @@
     <p>HELLO IM ACTOR!!!</p>
     <input class="hero-name" name="name" type="text" value="{{actor.name}}" title="Hero's Name">
 
-    <input name="system.hp" type="text" value="{{actor.system.hp}}"/>
+    <p>HP</p>
+    <input name="system.hp" type="number" value="{{actor.system.hp}}" step="1"/>
+
+    <table>
+        <tr>
+            <th>PHY</th>
+            <th>AGI</th>
+            <th>INT</th>
+        </tr>
+        <tr>
+            <td>
+                <input name="system.phy" type="number" value="{{actor.system.phy}}" step="1"/>
+            </td>
+
+            <td>
+                <input name="system.agi" type="number" value="{{actor.system.agi}}" step="1"/>
+            </td>
+
+            <td>
+                <input name="system.int" type="number" value="{{actor.system.int}}" step="1"/>
+            </td>            
+        </tr>
+    </table>
+
+    <table>
+      <tr>
+        <th>SPD</th>
+        <th>STR</th>
+        <th>PRW</th>
+        <th>POI</th>
+        <th>ARC</th>
+        <th>PER</th>
+    </tr>
+    <tr>
+      <td>
+        <input name="system.spd" type="number" value="{{actor.system.spd}}" step="1"/>
+    </td>
+
+    <td>
+        <input name="system.str" type="number" value="{{actor.system.str}}" step="1"/>
+    </td>
+
+    <td>
+        <input name="system.prw" type="number" value="{{actor.system.prw}}" step="1"/>
+    </td>
+
+    <td>
+        <input name="system.poi" type="number" value="{{actor.system.poi}}" step="1"/>
+    </td>
+
+    <td>
+        <input name="system.arc" type="number" value="{{actor.system.arc}}" step="1"/>
+    </td>
+
+    <td>
+        <input name="system.per" type="number" value="{{actor.system.per}}" step="1"/>
+    </td>
+    </tr>
+    </table>
+
+    <table>
+        <tr>
+            <th>DEF</th>
+            <th>ARM</th>
+            <th>WILL</th>
+            <th>FEAT</th>
+        </tr>
+        <tr>
+            <td>
+                <input name="system.def" type="number" value="{{actor.system.def}}" step="1"/>
+            </td>
+
+            <td>
+                <input name="system.arm" type="number" value="{{actor.system.arm}}" step="1"/>
+            </td>
+
+            <td>
+                <input name="system.will" type="number" value="{{actor.system.will}}" step="1"/>
+            </td>
+
+            <td>
+                <input name="system.feat" type="number" value="{{actor.system.feat}}" step="1"/>
+            </td>            
+        </tr>
+    </table>
 
     <section class="items">
   <h3>Owned Items</h3>
@@ -34,11 +118,17 @@
   <button type="button" class="roll-melee-one-hand-attack"
           data-item-id="{{item._id}}"
           data-att-modifier="{{item.system.attModifierOneHanded}}"
-          data-pow="{{item.system.powOneHanded}}">Melee (1H)</button>
+          data-pow="{{item.system.powOneHanded}}">Swing (1H)</button>
   <button type="button" class="roll-melee-two-hand-attack"
           data-item-id="{{item._id}}"
           data-att-modifier="{{item.system.attModifierTwoHanded}}"
-          data-pow="{{item.system.powTwoHanded}}">Melee (2H)</button>
+          data-pow="{{item.system.powTwoHanded}}">Swing (2H)</button>
+{{/if}}
+
+{{#if (eq item.type "armor")}}
+  <button type="button" class="recalculate-armor"
+          data-item-id="{{item._id}}"
+          data-arm-modifier="{{item.system.armModifier}}">Recalculate Armor</button>
 {{/if}}
     </li>
   {{/each}}
