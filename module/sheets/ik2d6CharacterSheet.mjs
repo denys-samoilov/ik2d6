@@ -45,6 +45,15 @@ export default class IK2d6ActorSheet extends ActorSheet {
       const pow = Number(button.data('pow')) || 0;
       this._onRoll(ev, attModifier, pow);
     });
+
+    html.find('.dev-switch').click(ev => {
+      const enabled = $(ev.currentTarget).find('input').is(':checked');
+
+      html.find('.dev-mode')
+      .prop('disabled', !enabled)  
+    });
+
+    html.find('.dev-mode').prop('disabled', true); // Disable the input field by default
   }
 
   // Attack rolls function
@@ -168,29 +177,29 @@ export default class IK2d6ActorSheet extends ActorSheet {
 async _onCheckJson(event) {
   event.preventDefault();
 
-  const response = await fetch("systems/ik2d6/bases/race.json");
-  const json = await response.json();
+  const data = await fetch("systems/ik2d6/bases/race.json");
 
-  const raceName = this.actor.system.race;
-  const raceKey = raceName.charAt(0).toUpperCase() + raceName.slice(1);
-  const raceData = json[raceKey];
+  const racesData = await data.json();
 
-  console.log("Race selected:", raceName);
-  console.log("Race key:", raceKey);
-  console.log("Loaded race data:", raceData);
+  const actorRace = this.actor.system.race;
 
-  if (!raceData) {
-    ui.notifications.error("Race not found in JSON!");
-    return;
-  }
+  const raceName = racesData[actorRace].name;
+  const phy = racesData[actorRace].phy_start;
+  const agi = racesData[actorRace].agl_start;
+  const int = racesData[actorRace].int_start;
 
-  // TEST: set only PHY to race starting value
-  await this.actor.update({
-    "system.phy": raceData.phy_start
-  });
 
-  ui.notifications.info("Updated PHY from race.json! Check actor sheet.");
+  this.actor.update({ "system.race": raceName });
+  this.actor.update({ "system.phy": phy });
+  this.actor.update({ "system.agi": agi });
+  this.actor.update({ "system.int": int });
+
+  console.log("Name:", raceName);
+  console.log("Phy:", phy);
+  console.log("Agi:", agi);
+  console.log("Int:", int);
 }
+
 
 
 

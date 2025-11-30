@@ -13,9 +13,20 @@
         "character":{
             "hp": 0,
             "templates": ["primaryStats", "secondaryStats"],
-            "race": ""
+            "race": "",
+            "sex": "",
+            "characteristics": "",
+            "weight": 0,
+            "level": 1,
+            "careers": "",
+            "faith": "",
+            "height": "",
+            "xp": 0
+
+
 
         }
+        
     },
 
     "Item": {

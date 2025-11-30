@@ -1,8 +1,8 @@
 {
 
-    "human":{
+    "Human":{
 
-    "Name": "Human",
+    "name": "Human",
 
     "phy_start": 5,
     "phy_hero_limit":7,
@@ -49,6 +49,57 @@
     "per_hero_limit":5,
     "per_vet_limit":6,
     "per_epic_limit":7
+    },
+
+    "Dwarf":{
+
+    "name": "Dwarf",
+
+    "phy_start": 6,
+    "phy_hero_limit":8,
+    "phy_vet_limit":9,
+    "phy_epic_limit":10,
+
+    "spd_start": 5,
+    "spd_hero_limit":6,
+    "spd_vet_limit":6,
+    "spd_epic_limit":6,
+
+    "str_start": 5,
+    "str_hero_limit":7,
+    "str_vet_limit":8,
+    "str_epic_limit":9,
+
+    "agl_start": 2,
+    "agl_hero_limit":4,
+    "agl_vet_limit":5,
+    "agl_epic_limit":6,
+
+    "prw_start": 3,
+    "prw_hero_limit":4,
+    "prw_vet_limit":5,
+    "prw_epic_limit":6,
+
+    "poi_start": 3,
+    "poi_hero_limit":4,
+    "poi_vet_limit":5,
+    "poi_epic_limit":6,
+
+    "int_start": 2,
+    "int_hero_limit":4,
+    "int_vet_limit":5,
+    "int_epic_limit":6,
+
+    "arc_start": false,
+    "arc_hero_limit":4,
+    "arc_vet_limit":5,
+    "arc_epic_limit":6,
+
+    "per_start": 2,
+    "per_hero_limit":4,
+    "per_vet_limit":5,
+    "per_epic_limit":6
     }
+   
     
 }
