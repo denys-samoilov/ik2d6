@@ -5,10 +5,10 @@
     </header>
 
     <p>Race</p>
-    <input class="hero-race" name="race" type="text" value="{{actor.system.race}}" title="Hero's Race">
+    <input name="system.race" type="text" value="{{actor.system.race}}"/> <!--if actor.something - class, else - name -->
 
     <p>Name</p>
-    <input class="hero-name" name="name" type="text" value="{{actor.name}}" title="Hero's Name">
+    <input class="hero-name" name="name" type="text" value="{{actor.name}}"/>
 
     <p>HP</p>
     <input name="system.hp" type="number" value="{{actor.system.hp}}" step="1"/>
