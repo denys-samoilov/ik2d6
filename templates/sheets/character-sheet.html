@@ -1,15 +1,11 @@
-<div class="ratio-keeper">
-<form class="actor-sheet {{cssClass}}" autocomplete="on">
+<form class="actor-sheet {{cssClass}}" autocomplete="off">
     <header class="sheet-header">
         <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
         <h1 class="charname"></h1> 
     </header>
 
     Developer Mode:
-    <label class="switch dev-switch">
-        <input type="checkbox">
-        <span class="slider round"></span>
-    </label>
+        <input type="checkbox" class="dev-switch">
 
     <table>
         <tr>
@@ -30,13 +26,13 @@
             </td>
 
             <td>
-                <input name="system.characteristics" type="text" value="{{actor.system.characteristics}}"/>
+                <input name="system.characteristics" class="dev-mode" type="text" value="{{actor.system.characteristics}}" disabled/>
             </td>            
             <td>
-                <input name="system.weight" type="number" value="{{actor.system.weight}}" step="1"/>
+                <input name="system.weight" class="dev-mode" type="number" value="{{actor.system.weight}}" step="1" disabled/>
             </td>
             <td style="background-color: aliceblue;">
-                <input name="system.level" type="number" value="{{actor.system.level}}" step="1"/>
+                <input name="system.level" class="dev-mode" type="number" value="{{actor.system.level}}" step="1" disabled/>
             </td>
 
         </tr>
@@ -51,25 +47,25 @@
 
         <tr>
             <td>
-                <input name="system.archetype" type="text" value="{{actor.system.archetype}}"/>
+                <input name="system.archetype" class="dev-mode" type="text" value="{{actor.system.archetype}}" disabled/>
             </td>
             <td>
-                <select name="system.race" style="width: 100%;">
+                <select name="system.race" class="dev-mode" style="width: 100%;" disabled>
                     <option value="Human" {{#if (eq actor.system.race "Human")}}selected{{/if}}>Human</option>
                     <option value="Dwarf" {{#if (eq actor.system.race "Dwarf")}}selected{{/if}}>Dwarf</option>
                 </select>
             </td>
             <td>
-                <input name="system.careers" type="text" value="{{actor.system.careers}}"/>
+                <input name="system.careers" class="dev-mode" type="text" value="{{actor.system.careers}}" disabled/>
             </td>
             <td>
-                <input name="system.faith" type="text" value="{{actor.system.faith}}"/>
+                <input name="system.faith" class="dev-mode" type="text" value="{{actor.system.faith}}" disabled/>
             </td>
             <td>
-                <input name="system.height" type="number" value="{{actor.system.height}}"/>
+                <input name="system.height" class="dev-mode" type="number" value="{{actor.system.height}}" disabled/>
             </td>
             <td style="background-color: aliceblue;">
-                <input name="system.xp" type="number" value="{{actor.system.xp}}"/>
+                <input name="system.xp" class="dev-mode" type="number" value="{{actor.system.xp}}" disabled/>
             </td>
         </tr>
     </table>
@@ -209,4 +205,3 @@
 
 </section>
 </form>
-</div>

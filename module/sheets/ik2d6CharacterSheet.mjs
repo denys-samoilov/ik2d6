@@ -46,14 +46,14 @@ export default class IK2d6ActorSheet extends ActorSheet {
       this._onRoll(ev, attModifier, pow);
     });
 
-    html.find('.dev-switch').click(ev => {
-      const enabled = $(ev.currentTarget).find('input').is(':checked');
+    html.find('.dev-switch').change(ev => {
+        // Find the checkbox's checked state directly from the event target
+        const enabled = ev.currentTarget.checked;
 
-      html.find('.dev-mode')
-      .prop('disabled', !enabled)  
+        // Toggle the 'disabled' property for all elements with class 'dev-mode'
+        html.find('.dev-mode')
+            .prop('disabled', !enabled);
     });
-
-    html.find('.dev-mode').prop('disabled', true); // Disable the input field by default
   }
 
   // Attack rolls function
