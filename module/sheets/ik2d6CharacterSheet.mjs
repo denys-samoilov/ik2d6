@@ -18,6 +18,11 @@ export default class IK2d6ActorSheet extends ActorSheet {
       const itemId = li.data('item-id');
       this.actor.deleteEmbeddedDocuments("Item", [itemId]);
     });
+
+    html.find('.check-json').click(ev => {
+      this._onCheckJson(ev);
+    });
+
     
     // Handle item editing
     html.find('.item-edit').click(ev => {
@@ -49,6 +54,11 @@ export default class IK2d6ActorSheet extends ActorSheet {
     // Target check
     if (!game.user.targets.size) {
       ui.notifications.warn("Attacking, huh? You need to select a target first!");
+      return;
+    }
+
+    if (game.user.targets.size>1) {
+      ui.notifications.warn("Did you really mean to attack multiple targets at once? Please select only one target.");
       return;
     }
 
@@ -88,8 +98,8 @@ export default class IK2d6ActorSheet extends ActorSheet {
     await new Promise(resolve => setTimeout(resolve, 3000));
 
     // Attack result check
-    if (attackRoll.total < 7) {
-      ui.notifications.info(`${this.actor.name} attacks ${targetActor.name}... but misses!`);
+    if (attackRoll.total < targetActor.system.def) {
+      ui.notifications.info(`${this.actor.race} ${this.actor.name} attacks ${targetActor.name}... but misses!`);
       return;
     } else {
       ui.notifications.info(`${this.actor.name} attacks ${targetActor.name} and hits!`);
@@ -123,10 +133,10 @@ export default class IK2d6ActorSheet extends ActorSheet {
     await new Promise(resolve => setTimeout(resolve, 3000));
 
     // Damage result check
-    if (damageRoll.total > 15) {
-      const armor = 15; 
-      const effectiveDamage = Math.max(damageRoll.total - armor, 0);
-      const currentHp = Number(getProperty(targetActor, "system.hp")) || 0;
+    if (damageRoll.total > targetActor.system.arm) {
+      const armor = targetActor.system.arm; 
+      const effectiveDamage = damageRoll.total - armor;
+      const currentHp = Number(getProperty(targetActor, "system.hp"));
       const newHp = Math.max(currentHp - effectiveDamage, 0);
       await targetActor.update({ "system.hp": newHp });
       ui.notifications.info(`Target ${targetActor.name} takes damage! HP reduced.`);
@@ -155,4 +165,38 @@ export default class IK2d6ActorSheet extends ActorSheet {
     }
   }
 
+async _onCheckJson(event) {
+  event.preventDefault();
+
+  const response = await fetch("systems/ik2d6/bases/race.json");
+  const json = await response.json();
+
+  const raceName = this.actor.system.race;
+  const raceKey = raceName.charAt(0).toUpperCase() + raceName.slice(1);
+  const raceData = json[raceKey];
+
+  console.log("Race selected:", raceName);
+  console.log("Race key:", raceKey);
+  console.log("Loaded race data:", raceData);
+
+  if (!raceData) {
+    ui.notifications.error("Race not found in JSON!");
+    return;
+  }
+
+  // TEST: set only PHY to race starting value
+  await this.actor.update({
+    "system.phy": raceData.phy_start
+  });
+
+  ui.notifications.info("Updated PHY from race.json! Check actor sheet.");
 }
+
+
+
+
+
+}
+
+
+

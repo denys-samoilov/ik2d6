@@ -1,0 +1,54 @@
+{
+
+    "human":{
+
+    "Name": "Human",
+
+    "phy_start": 5,
+    "phy_hero_limit":7,
+    "phy_vet_limit":8,
+    "phy_epic_limit":8,
+
+    "spd_start": 6,
+    "spd_hero_limit":7,
+    "spd_vet_limit":7,
+    "spd_epic_limit":7,
+
+    "str_start": 4,
+    "str_hero_limit":6,
+    "str_vet_limit":7,
+    "str_epic_limit":8,
+
+    "agl_start": 3,
+    "agl_hero_limit":5,
+    "agl_vet_limit":6,
+    "agl_epic_limit":7,
+
+    "prw_start": 4,
+    "prw_hero_limit":5,
+    "prw_vet_limit":6,
+    "prw_epic_limit":7,
+
+    "poi_start": 4,
+    "poi_hero_limit":5,
+    "poi_vet_limit":6,
+    "poi_epic_limit":7,
+
+    
+    "int_start": 3,
+    "int_hero_limit":5,
+    "int_vet_limit":6,
+    "int_epic_limit":7,
+
+    "arc_start": false,
+    "arc_hero_limit":5,
+    "arc_vet_limit":6,
+    "arc_epic_limit":7,
+
+    "per_start": 3,
+    "per_hero_limit":5,
+    "per_vet_limit":6,
+    "per_epic_limit":7
+    }
+    
+}

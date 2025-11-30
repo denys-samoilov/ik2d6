@@ -3,8 +3,11 @@
         <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
         <h1 class="charname"></h1>
     </header>
-    
-    <p>HELLO IM ACTOR!!!</p>
+
+    <p>Race</p>
+    <input class="hero-race" name="race" type="text" value="{{actor.system.race}}" title="Hero's Race">
+
+    <p>Name</p>
     <input class="hero-name" name="name" type="text" value="{{actor.name}}" title="Hero's Name">
 
     <p>HP</p>
@@ -92,6 +95,9 @@
             </td>            
         </tr>
     </table>
+
+      <button type="button" class="check-json">Apply</button>
+
 
     <section class="items">
   <h3>Owned Items</h3>

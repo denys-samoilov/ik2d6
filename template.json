@@ -11,7 +11,8 @@
         },
         "character":{
             "hp": 0,
-            "templates": ["primaryStats", "secondaryStats"]
+            "templates": ["primaryStats", "secondaryStats"],
+            "race": ""
         }
     },
 
