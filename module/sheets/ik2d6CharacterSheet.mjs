@@ -199,12 +199,6 @@ async _onCheckJson(event) {
   console.log("Agi:", agi);
   console.log("Int:", int);
 }
-
-
-
-
-
-
 }
 
 

@@ -1,3 +1,22 @@
+
+
+<script>
+function openTab(evt, tabName) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(tabName).style.display = "block";
+  evt.currentTarget.className += " active";
+}
+</script>
+
+
 <form class="actor-sheet {{cssClass}}" autocomplete="off">
     <header class="sheet-header">
         <img src="{{actor.img}}" data-edit="img" title="{{actor.name}}" height="64" width="64"/>
@@ -53,6 +72,10 @@
                 <select name="system.race" class="dev-mode" style="width: 100%;" disabled>
                     <option value="Human" {{#if (eq actor.system.race "Human")}}selected{{/if}}>Human</option>
                     <option value="Dwarf" {{#if (eq actor.system.race "Dwarf")}}selected{{/if}}>Dwarf</option>
+                    <option value="Iosan" {{#if (eq actor.system.race "Iosan")}}selected{{/if}}>Iosan</option>
+                    <option value="Nyss" {{#if (eq actor.system.race "Nyss")}}selected{{/if}}>Nyss</option>
+                    <option value="Ogrun" {{#if (eq actor.system.race "Ogrun")}}selected{{/if}}>Ogrun</option>
+                    <option value="Trollkin" {{#if (eq actor.system.race "Trollkin")}}selected{{/if}}>Trollkin</option>
                 </select>
             </td>
             <td>
@@ -159,49 +182,124 @@
         </tr>
     </table>
 
-      <button type="button" class="check-json">Apply</button>
+    <button type="button" class="check-json">Apply</button>
 
+    <h2>Subtabs</h2>
 
-    <section class="items">
-  <h3>Owned Items</h3>
-  <ol class="actor-items">
-  {{#each actor.items as |item id|}}
-    <li class="actor-item" data-item-id="{{item._id}}">
-      {{item.name}}
-      <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
-      <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
-      <label>
-        <input type="checkbox" class="boost-att-checkbox" data-item-id="{{item._id}}"> Boost Attack (3d6)
-      </label>
-      <label>
-        <input type="checkbox" class="boost-dmg-checkbox" data-item-id="{{item._id}}"> Boost Damage (3d6)
-      </label>
-      {{#if (eq item.type "ranged-weapon")}}
-  <button type="button" class="roll-ranged-attack"
-          data-item-id="{{item._id}}"
-          data-att-modifier="{{item.system.attModifier}}"
-          data-pow="{{item.system.pow}}">Shoot!</button>
-{{/if}}
+    <div class = "tab">
+        <table>
+            <tr>
+                <th>
+                    <button class="tablinks" onclick="openTab(event, 'ranged-weapons')">Ranged Weapons</button>
+                </th>
 
-{{#if (eq item.type "melee-weapon")}}
-  <button type="button" class="roll-melee-one-hand-attack"
-          data-item-id="{{item._id}}"
-          data-att-modifier="{{item.system.attModifierOneHanded}}"
-          data-pow="{{item.system.powOneHanded}}">Swing (1H)</button>
-  <button type="button" class="roll-melee-two-hand-attack"
-          data-item-id="{{item._id}}"
-          data-att-modifier="{{item.system.attModifierTwoHanded}}"
-          data-pow="{{item.system.powTwoHanded}}">Swing (2H)</button>
-{{/if}}
+                <th>
+                    <button class="tablinks" onclick="openTab(event, 'melee-weapons')">Melee Weapons</button>
+                </th>
+                <th>
+                    <button class="tablinks" onclick="openTab(event, 'armor')">Armor</button>
+                </th>
+                <th>
+                    <button class="tablinks" onclick="openTab(event, 'skills')">Skills</button>
+                </th>
 
-{{#if (eq item.type "armor")}}
-  <button type="button" class="recalculate-armor"
-          data-item-id="{{item._id}}"
-          data-arm-modifier="{{item.system.armModifier}}">Recalculate Armor</button>
-{{/if}}
-    </li>
-  {{/each}}
-</ol>
+                <th>
+                    <button class="tablinks" onclick="openTab(event, 'other-items')">Other Items</button>
+                </th>
 
-</section>
+                <th>
+                    <button class="tablinks" onclick="openTab(event, 'spells')">Spells</button>
+                </th>
+            </tr>
+        </table>
+    </div>
+
+    <div id="ranged-weapons" class="tabcontent" style="display: none;">
+        <h3>Ranged Weapons</h3>
+        <ol class="actor-items">
+            {{#each actor.items as |item id|}}
+                {{#if (eq item.type "ranged-weapon")}}
+                    <li class="actor-item" data-item-id="{{item._id}}">
+                        {{item.name}}
+                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                        <label>
+                            <input type="checkbox" class="boost-att-checkbox" data-item-id="{{item._id}}"> Boost Attack (3d6)
+                        </label>
+                        <label>
+                            <input type="checkbox" class="boost-dmg-checkbox" data-item-id="{{item._id}}"> Boost Damage (3d6)
+                        </label>
+                        <button type="button" class="roll-ranged-attack"
+                                data-item-id="{{item._id}}"
+                                data-att-modifier="{{item.system.attModifier}}"
+                                data-pow="{{item.system.pow}}">Shoot!</button>
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ol>
+    </div>
+
+    <div id="melee-weapons" class="tabcontent" style="display: none;">
+        <h3>Melee Weapons</h3>
+        <ol class="actor-items">
+            {{#each actor.items as |item id|}}
+                {{#if (eq item.type "melee-weapon")}}
+                    <li class="actor-item" data-item-id="{{item._id}}">
+                        {{item.name}}
+                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                        <label>
+                            <input type="checkbox" class="boost-att-checkbox" data-item-id="{{item._id}}"> Boost Attack (3d6)
+                        </label>
+                        <label>
+                            <input type="checkbox" class="boost-dmg-checkbox" data-item-id="{{item._id}}"> Boost Damage (3d6)
+                        </label>
+                        <button type="button" class="roll-melee-one-hand-attack"
+                                data-item-id="{{item._id}}"
+                                data-att-modifier="{{item.system.attModifierOneHanded}}"
+                                data-pow="{{item.system.powOneHanded}}">Swing (1H)</button>
+                        <button type="button" class="roll-melee-two-hand-attack"
+                                data-item-id="{{item._id}}"
+                                data-att-modifier="{{item.system.attModifierTwoHanded}}"
+                                data-pow="{{item.system.powTwoHanded}}">Swing (2H)</button>
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ol>
+    </div>
+
+    <div id="armor" class="tabcontent" style="display: none;">
+        <h3>Armor</h3>
+        <ol class="actor-items">
+            {{#each actor.items as |item id|}}
+                {{#if (eq item.type "armor")}}
+                    <li class="actor-item" data-item-id="{{item._id}}">
+                        {{item.name}}
+                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ol>
+    </div>
+
+    <div id="skills" class="tabcontent" style="display: none;">
+        <h3>Skills</h3>
+        <ol class="actor-items">
+            {{#each actor.items as |item id|}}
+                {{#if (eq item.type "skill")}}
+                    <li class="actor-item" data-item-id="{{item._id}}">
+                        {{item.name}}
+                        <a class="item-control item-delete" title="Delete Item"><i class="fas fa-trash"></i></a>
+                        <a class="item-control item-edit" title="Edit Item"><i class="fas fa-edit"></i></a>
+                        <button type="button" class="roll-skill-check"
+                                data-item-id="{{item._id}}"
+                                data-modifier="{{item.system.modifier}}">Roll Skill Check</button>
+                    </li>
+                {{/if}}
+            {{/each}}
+        </ol>
+    </div>
 </form>
+
+

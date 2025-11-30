@@ -1,0 +1,10 @@
+{
+    "type": "skill",
+    "name": "Skill Name",
+    "img": "icons/svg/book.svg",
+    "system": {
+        "description": "Description of the skill",
+        "modifier": 0,
+        "attribute": "str"
+    }
+}
